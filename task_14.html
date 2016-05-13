@@ -6,11 +6,11 @@
 </head>
 <body>
 	<h3>污染城市列表</h3>
-	<ul id="api-list">
+	<ul id="aqi-list">
 	</ul>
 <script>
 
-var apiData = [
+var aqiData = [
 		["北京", 90],
 		["上海", 50],
 		["福州", 10],
@@ -27,7 +27,7 @@ var apiData = [
 	 */
 	
 	// 对Date数据进行倒序排列
-	apiData.sort(function(a, b) {
+	aqiData.sort(function(a, b) {
 		return b[1] - a[1];
 	});
 
@@ -35,12 +35,15 @@ var apiData = [
 	var arrNum = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
 	var str = '';
 
-	for(var city in apiData) {
-		if(apiData[city][1] >= 60) {
-	 		str += '<li>' + '第' + arrNum[city] + '名：' + apiData[city][0] + '，' + apiData[city][1] + '</li>';
+	// 按条件遍历Date数据并拼接html
+	for(var city in aqiData) {
+		if(aqiData[city][1] >= 60) {
+	 		str += '<li>' + '第' + arrNum[city] + '名：' + aqiData[city][0] + '，' + aqiData[city][1] + '</li>';
 	 	}
 	}
- 	document.getElementById('api-list').innerHTML = str;
+
+	// 添加html内容
+ 	document.getElementById('aqi-list').innerHTML = str;
 
 	
 })();
